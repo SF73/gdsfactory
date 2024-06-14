@@ -138,6 +138,7 @@ class FileWatcher(FileSystemEventHandler):
                 elif str(filepath).endswith(".py"):
                     d = dict(locals(), **globals())
                     d.update(__name__="__main__")
+                    d.update(__file__=str(filepath.absolute()))
                     exec(filepath.read_text(), d, d)
                 else:
                     print("Changed file {filepath} ignored (not .pic.yml or .py)")
