@@ -73,7 +73,7 @@ def watch(
 ) -> None:
     """Filewatch a folder for changes in *.py or *.pic.yml files."""
     path = pathlib.Path(path)
-    path = path.parent if path.is_dir() else path
+    path = path.parent if not path.is_dir() else path
     _watch(str(path), pdk=pdk)
 
 
